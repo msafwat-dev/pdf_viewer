@@ -30,7 +30,6 @@ import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.BinaryMessenger;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
-import io.flutter.plugin.common.PluginRegistry;
 
 /**
  * FlutterPluginPdfViewerPlugin
@@ -45,16 +44,6 @@ public class FlutterPluginPdfViewerPlugin implements MethodChannel.MethodCallHan
     private Handler backgroundHandler;
     private final Object pluginLocker = new Object();
     private final String filePrefix = "FlutterPluginPdfViewer";
-
-    /**
-     * Plugin registration.
-     */
-    public static void registerWith(PluginRegistry.Registrar registrar) {
-        if (instance == null) {
-            instance = new FlutterPluginPdfViewerPlugin();
-        }
-        instance.onAttachedToEngine(registrar.context(), registrar.messenger());
-    }
 
     public void onAttachedToEngine(Context applicationContext, BinaryMessenger messenger) {
         synchronized (initializationLock) {
